@@ -68,10 +68,10 @@ int main() {
 	dilate(imgcanny, dila, kernel);
 	getcontours(dila, img);
 	imshow("Display window", img);
-	//imshow("gray", grey);
-	//imshow("dilate", dila);
-	//imshow("canny", imgcanny);
-	//imshow("blur", blur);
+	imshow("gray", grey);
+	imshow("dilate", dila);
+	imshow("canny", imgcanny);
+	imshow("blur", blur);
 	waitKey(0);
 
 	return 0;
