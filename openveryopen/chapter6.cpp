@@ -19,13 +19,25 @@ int main() {
 	string p = "C:\\Users\\madmi\\OneDrive\\Desktop\\OIP (2).jpg";
 	Mat img = imread(p), imgHSV;
 	cvtColor(img, imgHSV, COLOR_BGR2HSV);
-	Scalar lower(hmin, smin, vmin);
-	Scalar upper(hmax, smax, vmax);
-	inRange(imgHSV,lower, upper, mask);
-	imshow("Display window", img);
-	imshow("Display", imgHSV);
-	imshow("mask", mask);
-	waitKey(0);
+	namedWindow("TrackbarCallback", (350,250));
+	createTrackbar("Hue Min", "TrackbarCallback", &hmin, 300);
+	createTrackbar("Hue max", "TrackbarCallback", &hmax, 300);
+	createTrackbar("sat Min", "TrackbarCallback", &smin, 300);
+	createTrackbar("sat max", "TrackbarCallback", &smax, 300);
+	createTrackbar("val Min", "TrackbarCallback", &vmin, 300);
+	createTrackbar("val max", "TrackbarCallback", &vmax, 300);
+
+
+	while (true) {
+		Scalar lower(hmin, smin, vmin);
+		Scalar upper(hmax, smax, vmax);
+		inRange(imgHSV,lower, upper, mask);
+		imshow("Display window", img);
+		imshow("Display", imgHSV);
+		imshow("mask", mask);
+		waitKey(1);
+	}
+	
 	return 0;
 }
 
